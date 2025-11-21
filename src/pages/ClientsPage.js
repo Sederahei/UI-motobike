@@ -1,29 +1,41 @@
-// src/pages/PanierPage.js
+// src/pages/ClientsPage.js
 import React, { useEffect, useState } from "react";
-import Panier from "../assets/components/layout/Entity/Panier";
+import { Card, CardContent, Typography } from "@mui/material";
 
-function PanierPage() {
-  const [panier, setPanier] = useState(null);
+const API_URL = process.env.REACT_APP_API_URL;
+
+function ClientsPage() {
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/paniers/1") // exemple clientId=1
-      .then(res => res.json())
-      .then(data => setPanier(data));
+    fetch(`${API_URL}/clients`) // ✅ getAll
+      .then(res => {
+        if (!res.ok) throw new Error("Erreur HTTP " + res.status);
+        return res.json();
+      })
+      .then(data => setClients(Array.isArray(data) ? data : []))
+      .catch(err => console.error("Erreur fetch clients:", err));
   }, []);
 
-  const validerCommande = () => {
-    fetch("http://localhost:8080/api/commandes/valider/1", { method: "POST" })
-      .then(res => res.json())
-      .then(data => alert("Commande validée !"));
-  };
+  if (!Array.isArray(clients) || clients.length === 0) {
+    return <p>Aucun client trouvé...</p>;
+  }
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>🛍️ Mon Panier</h2>
-      {panier && <Panier panier={panier} />}
-      <button onClick={validerCommande}>✅ Valider la commande</button>
+      <h2>👤 Liste des Clients</h2>
+      {clients.map(client => (
+        <Card key={client.id} sx={{ boxShadow: 3, borderRadius: 2, marginBottom: 2 }}>
+          <CardContent>
+            <Typography variant="h6">{client.nom}</Typography>
+            <Typography variant="body2">Email : {client.email}</Typography>
+            <Typography variant="body2">Téléphone : {client.telephone}</Typography>
+            <Typography variant="body2">Adresse : {client.adresse}</Typography>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }
 
-export default PanierPage;
+export default ClientsPage;
