@@ -12,11 +12,10 @@ import HistoriquePage from "./pages/HistoriquePage";
 function App() {
   return (
     <Router>
-      {/* ✅ Barre de navigation moderne */}
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            🚀 MotoBike App
+            🚀 MotoBike Store
           </Typography>
           <Button color="inherit" component={Link} to="/">Accueil</Button>
           <Button color="inherit" component={Link} to="/produits">Produits</Button>
@@ -31,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produits" element={<ProduitsPage />} />
-        <Route path="/panier" element={<PanierPage />} />
+        <Route path="/paniers" element={<PanierPage />} />
         <Route path="/commandes" element={<CommandesPage />} />
         <Route path="/clients" element={<ClientsPage />} />
         <Route path="/historique" element={<HistoriquePage />} />
