@@ -36,7 +36,7 @@ function HistoriquePage() {
       {commandes.map(cmd => (
         <Card key={cmd.id} sx={{ boxShadow: 3, borderRadius: 2, marginBottom: 3 }}>
           <CardContent>
-            <Typography variant="h6">Commande #{cmd.id}</Typography>
+            <Typography variant="h6">Commande :{cmd.id}</Typography>
             <Typography variant="body2">
               Date : {new Date(cmd.dateCommande).toLocaleString()}
             </Typography>
