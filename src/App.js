@@ -19,7 +19,7 @@ function App() {
           </Typography>
           <Button color="inherit" component={Link} to="/">Accueil</Button>
           <Button color="inherit" component={Link} to="/produits">Produits</Button>
-          <Button color="inherit" component={Link} to="/panier">Panier</Button>
+          <Button color="inherit" component={Link} to="/paniers">Panier</Button>
           <Button color="inherit" component={Link} to="/commandes">Commandes</Button>
           <Button color="inherit" component={Link} to="/clients">Clients</Button>
           <Button color="inherit" component={Link} to="/historique">Historique</Button>
