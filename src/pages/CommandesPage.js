@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Chip, Divider } from "@mui/material";
 
 const API_URL = process.env.REACT_APP_API_URL;
+//import "";
 
 function CommandesPage() {
   const [commandes, setCommandes] = useState([]);
@@ -33,15 +34,22 @@ function CommandesPage() {
     <div style={{ padding: "20px" }}>
       <h2>📦 Liste des Commandes</h2>
       {commandes.map(cmd => (
-        <Card key={cmd.id} sx={{ boxShadow: 3, borderRadius: 2, marginBottom: 3 }}>
+        <Card key={cmd.id} className="card-hover" sx={{ borderRadius: 2, marginBottom: 3 }}>
           <CardContent>
-            <Typography variant="h6">Commande #{cmd.id}</Typography>
+            <Typography variant="h6" sx={{ color: "var(--primary-color)", fontWeight: "bold" }}>Commande : {cmd.id}</Typography>
+             <Chip 
+                    label={cmd.statut} 
+                    className={cmd.statut === "en_attente" ? "status-waiting" : ""}
+                    sx={{ mt: 1
+                }} 
+            /> 
             <Typography variant="body2">Client : {cmd.client.nom}</Typography>
             <Typography variant="body2">Date : {new Date(cmd.dateCommande).toLocaleString()}</Typography>
             <Typography variant="body2">Total : {cmd.total} Ar</Typography>
             <Chip label={cmd.statut} color={getColor(cmd.statut)} sx={{ mt: 1 }} />
             <Divider sx={{ my: 2 }} />
             <Typography variant="subtitle1">🛒 Produits :</Typography>
+            
             {Array.isArray(cmd.lignes) && cmd.lignes.map(ligne => (
               <Typography key={ligne.id} variant="body2">
                 {ligne.produit.nom} ({ligne.produit.marque}) — {ligne.quantite} × {ligne.prixUnitaire} Ar = {ligne.sousTotal} Ar
