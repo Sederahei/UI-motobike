@@ -1,0 +1,62 @@
+/* src/pagesStyle/Home.css */
+
+:root {
+  --primary-color: #d18d47;
+  --secondary-color: #dc9449;
+  --accent-color: #602c15;
+  --dark-color: #2b0f0b;
+  --light-bg: #faf4c4;
+  --highlight: #7d4c26;
+  --promo-bg: #fadf90;
+  --promo-accent: #edc182;
+  --success-color: #2c640c;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.carousel-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: scroll-continuous 20s linear infinite;
+}
+
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused; /* pause pour faciliter le clic */
+}
+
+.product-card {
+  display: inline-block;
+  width: 260px;
+  margin: 0 12px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: var(--light-bg);
+}
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 6px 6px 16px rgba(0,0,0,0.25);
+}
+
+@keyframes scroll-continuous {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Animation infinie pour le texte promo */
+.promo-text {
+  color: #d32f2f;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
