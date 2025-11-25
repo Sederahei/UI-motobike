@@ -22,10 +22,10 @@ function ClientsPage() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px" ,color:"var(--primary-color)"}}>
       <h2>👤 Liste des Clients</h2>
       {clients.map(client => (
-        <Card key={client.id} sx={{ boxShadow: 3, borderRadius: 2, marginBottom: 2 }}>
+        <Card key={client.id} sx={{ boxShadow: 3, borderRadius: 2, marginBottom: 2,backgroundCli:"var(--primary-color)" }}>
           <CardContent>
             <Typography variant="h6">{client.nom}</Typography>
             <Typography variant="body2">Email : {client.email}</Typography>

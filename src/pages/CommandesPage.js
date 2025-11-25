@@ -31,12 +31,12 @@ function CommandesPage() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px" , color: "var(--primary-color)" }}>
       <h2>📦 Liste des Commandes</h2>
       {commandes.map(cmd => (
         <Card key={cmd.id} className="card-hover" sx={{ borderRadius: 2, marginBottom: 3 }}>
           <CardContent>
-            <Typography variant="h6" sx={{ color: "var(--primary-color)", fontWeight: "bold" }}>Commande : {cmd.id}</Typography>
+            <Typography variant="h6" sx={{  color: "var(--highlight)", fontWeight: "bold" }}>Commande : {cmd.id}</Typography>
              <Chip 
                     label={cmd.statut} 
                     className={cmd.statut === "en_attente" ? "status-waiting" : ""}
@@ -45,7 +45,7 @@ function CommandesPage() {
             /> 
             <Typography variant="body2">Client : {cmd.client.nom}</Typography>
             <Typography variant="body2">Date : {new Date(cmd.dateCommande).toLocaleString()}</Typography>
-            <Typography variant="body2">Total : {cmd.total} Ar</Typography>
+            <Typography variant="body2" sx={{ color: "var(--dark-color)" }}>Total : {cmd.total} Ar</Typography>
             <Chip label={cmd.statut} color={getColor(cmd.statut)} sx={{ mt: 1 }} />
             <Divider sx={{ my: 2 }} />
             <Typography variant="subtitle1">🛒 Produits :</Typography>
