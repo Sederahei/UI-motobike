@@ -1,20 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
-
+import ProductDetailPage from "./pages/ProductDetailPage"
 import Home from "./pages/Home";
 import CommandesPage from "./pages/CommandesPage";
 import ProduitsPage from "./pages/ProduitsPage";
 import PanierPage from "./pages/PanierPage";
 import ClientsPage from "./pages/ClientsPage";
 import HistoriquePage from "./pages/HistoriquePage";
+import { red } from "@mui/material/colors";
 
 function App() {
   return (
     <Router>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1 , color: red}}>
             🚀 MotoBike Store
           </Typography>
           <Button color="inherit" component={Link} to="/">Accueil</Button>
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/produits" element={<ProduitsPage />} />
+        <Route path="/produits/:id" element={<ProductDetailPage />} />
         <Route path="/paniers" element={<PanierPage />} />
         <Route path="/commandes" element={<CommandesPage />} />
         <Route path="/clients" element={<ClientsPage />} />
