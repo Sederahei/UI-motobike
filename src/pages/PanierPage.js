@@ -8,7 +8,6 @@ function PanierPage() {
   const [produitsPanier, setProduitsPanier] = useState([]);
   const clientId = 1; // 🔑 à remplacer par l'id du client connecté
 
-  // ✅ Charger les produits du panier
   const fetchPanier = () => {
     fetch(`${API_URL}/paniers/client/${clientId}/produits`)
       .then(res => {
@@ -30,8 +29,7 @@ function PanierPage() {
     })
       .then(res => {
         if (!res.ok) throw new Error("Erreur suppression produit");
-        // recharger le panier après suppression
-        fetchPanier();
+        fetchPanier(); // recharger après suppression
       })
       .catch(err => console.error("Erreur suppression:", err));
   };
@@ -40,7 +38,6 @@ function PanierPage() {
     return <p>Aucun produit dans le panier...</p>;
   }
 
-  
   const total = produitsPanier.reduce(
     (acc, pp) => acc + (pp.produit.prix * pp.quantite),
     0
@@ -66,14 +63,14 @@ function PanierPage() {
               Sous-total : {pp.produit.prix * pp.quantite} Ar
             </Typography>
 
-            {/* ✅ Bouton Supprimer */}
+            {/* ✅ Bouton Retirer */}
             <Button
               variant="outlined"
               color="error"
               sx={{ mt: 1 }}
               onClick={() => supprimerProduit(pp.id)}
             >
-              ❌ Supprimer dans les commandes
+              ❌ Retirer du panier
             </Button>
           </CardContent>
         </Card>
