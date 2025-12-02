@@ -24,9 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Correct: référence public/ */
-  background-image: url("../public/de.png");
+  background-image: url("../src/assets/components/layout/UI/img/de.png");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
